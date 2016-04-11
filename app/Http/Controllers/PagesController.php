@@ -7,9 +7,12 @@ use App\User;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
+use Services_Twilio_RestException;
 
 class PagesController extends Controller
 {
+    use SmsTrait;
+
     public function showMainPage(){
 
 
@@ -39,13 +42,26 @@ class PagesController extends Controller
     /**
      * handle send SMS action
      */
-    public function sendSMS(Request $request){
+    public function sendMessage(Request $request){
 
-//        dd($request->input());
+        $this->validate($request,[
+
+            'mobile' =>'required|numeric',
+            'smsBody' =>'required',
+
+        ]);
 
         $mobile  = $request->input('mobile');
+        $smsBody = $request->input('smsBody');
 
-        return redirect('send-sms')->with('message','Review has been made');
+        try{
+        $this->sendSMS($mobile,$smsBody);
+
+        return redirect('send-sms')->with('message','Message has been sent successfully');
+        }
+        catch(Services_Twilio_RestException $e){
+        return redirect('send-sms')->with('twilioError',$e->getMessage());
+        }
 
     }
 

@@ -10,12 +10,32 @@
 <!-- Begin: Content -->
 <section id="content">
 
+    <!-- Show Validation Error Message-->
+    @if(count($errors)>0)
+    @foreach ($errors->all() as $error)
+        <div class="alert alert-micro alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <i class="fa fa-remove pr10"></i>
+                {{ $error }}
+         </div>
+    @endforeach
+    @endif
+
     <!-- Show Session Message-->
     @if(session()->has('message'))
         <div class="alert alert-success alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <i class="fa fa-check pr10"></i>
-            SMS Sent Successful!
+            {{session()->get('message')}}
+        </div>
+    @endif
+
+    <!-- Show Twilio Error Message-->
+    @if(session()->has('twilioError'))
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <i class="fa fa-remove pr10"></i>
+             {{session()->get('twilioError')}}
         </div>
     @endif
 

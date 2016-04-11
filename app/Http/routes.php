@@ -46,7 +46,7 @@ Route::get('faq','PagesController@showFAQModifier');
 //show send SMS page
 Route::get('send-sms','PagesController@showSendSMS');
 //handle send SMS action
-Route::post('send-sms','PagesController@sendSMS');
+Route::post('send-sms','PagesController@sendMessage');
 
 
 
