@@ -17,7 +17,7 @@
                     <div class="panel panel-tile text-center br-a br-light">
                         <div class="panel-body bg-light">
                             <i class="fa fa-male text-info-darker fs45 br64 bg-light dark p15 ph20 mt10"></i>
-                            <h1 class="fs35 mbn">45</h1>
+                            <h1 class="fs35 mbn">{{$user_num}}</h1>
                             <h4 class="text-system">Users</h4>
                         </div>
                         <div class="panel-footer bg-light dark br-t br-light p12">
@@ -32,7 +32,7 @@
                     <div class="panel panel-tile text-center br-a br-light">
                         <div class="panel-body bg-light">
                             <i class="fa fa-female text-alert-light fs45 br64 bg-light dark p15 ph20 mt10"></i>
-                            <h1 class="fs35 mbn">26</h1>
+                            <h1 class="fs35 mbn">{{isset($affiliate_num)?$affiliate_num:0}}</h1>
                             <h4 class="text-system">Affiliates</h4>
                         </div>
                         <div class="panel-footer bg-light dark br-t br-light p12">
@@ -47,7 +47,7 @@
                     <div class="panel panel-tile text-center br-a br-light">
                         <div class="panel-body bg-light">
                             <i class="fa fa-check text-danger-dark fs45 br64 bg-light dark p15 ph20 mt10"></i>
-                            <h1 class="fs35 mbn">18</h1>
+                            <h1 class="fs35 mbn">{{isset($task_num)?$task_num:0}}</h1>
                             <h4 class="text-system">Completed Tasks</h4>
                         </div>
                         <div class="panel-footer bg-light dark br-t br-light p12">
@@ -62,7 +62,7 @@
                     <div class="panel panel-tile text-center br-a br-light">
                         <div class="panel-body bg-light">
                             <i class="fa fa-dollar text-warning-lighter fs45 br64 bg-light dark p15 ph20 mt10"></i>
-                            <h1 class="fs35 mbn">26</h1>
+                            <h1 class="fs35 mbn">{{isset($offer_num)?$offer_num:0}}</h1>
                             <h4 class="text-system">Sent Offers</h4>
                         </div>
                         <div class="panel-footer bg-light dark br-t br-light p12">
