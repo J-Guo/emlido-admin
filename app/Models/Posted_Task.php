@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Posted_Task extends Model
 {
+    protected $connection='mysql2';
+
     protected  $table='posted_tasks';
 
     /**

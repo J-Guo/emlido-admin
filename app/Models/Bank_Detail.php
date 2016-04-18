@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bank_Detail extends Model
 {
+    protected $connection='mysql2';
+
     protected  $table = "bank_details";
 
     /**

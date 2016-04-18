@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sent_Offer extends Model
 {
+    protected $connection='mysql2';
+
     protected  $table='sent_offers';
 
     /**
