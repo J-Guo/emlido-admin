@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//login and authentication routes
+Route::get('login','AdminController@showLogin');
+Route::post('login','AdminController@handleLogin');
+Route::get('logout','AdminController@showLogin');
+
 /*
 * Intervention Images Request Handler
 * handle all the images request from user and affiliate

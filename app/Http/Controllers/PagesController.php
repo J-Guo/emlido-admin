@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Posted_Task;
 use App\Models\Sent_Offer;
 use Illuminate\Http\Request;
-use App\User;
+use App\Client;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
@@ -22,12 +22,12 @@ class PagesController extends Controller
     public function showMainPage(){
 
         //get the number of users
-        $user_num = User::whereHas('roles',function($query){
+        $user_num = Client::whereHas('roles',function($query){
             $query->where('name','user');
         })->count();
 
         //get the number of affiliates
-        $affiliate_num = User::whereHas('roles',function($query){
+        $affiliate_num = Client::whereHas('roles',function($query){
             $query->where('name','affiliate');
         })->count();
 

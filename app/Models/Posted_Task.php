@@ -32,6 +32,6 @@ class Posted_Task extends Model
      */
     public function poster(){
         //second parameter is foreign_key
-        return $this->belongsTo('App\User','task_poster');
+        return $this->belongsTo('App\Client','task_poster');
     }
 }

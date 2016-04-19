@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\User;
+use App\Client;
 
 class UsersController extends Controller
 {
@@ -15,7 +15,7 @@ class UsersController extends Controller
      */
     public function showUserList(){
 
-        $users = User::whereHas('roles',function($query){
+        $users = Client::whereHas('roles',function($query){
             $query->where('name','user');
         })->get();
 
@@ -28,7 +28,7 @@ class UsersController extends Controller
      */
     public function showUserDetail($userid){
 
-        $user = User::find($userid);
+        $user =Client::find($userid);
 
 //        dd($user);
 
@@ -44,7 +44,7 @@ class UsersController extends Controller
     public function showAffiliateList(){
 
         //get all affiliates
-        $affiliates = User::whereHas('roles',function($query){
+        $affiliates = Client::whereHas('roles',function($query){
             $query->where('name','affiliate');})
             ->orderBy('id','asc')
             ->get();
@@ -59,7 +59,7 @@ class UsersController extends Controller
      */
     public function showAffiliate($id){
 
-        $affiliate = User::find($id);
+        $affiliate = Client::find($id);
 
         return view('affiliate')->with('affiliate',$affiliate);
 

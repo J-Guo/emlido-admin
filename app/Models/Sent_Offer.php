@@ -33,6 +33,6 @@ class Sent_Offer extends Model
      */
     public function sender(){
 
-        return $this->belongsTo('App\User','offer_maker');
+        return $this->belongsTo('App\Client','offer_maker');
     }
 }
