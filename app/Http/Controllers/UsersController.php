@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Client;
 
+
 class UsersController extends Controller
 {
     /**
@@ -29,10 +30,34 @@ class UsersController extends Controller
     public function showUserDetail($userid){
 
         $user =Client::find($userid);
+        // Create a client with a base URI
+        $client = new \GuzzleHttp\Client(['base_uri' => 'https://maps.googleapis.com/maps/api/geocode/']);
+
+        //set paramaters
+        $latitude = $user->latitude;
+        $longitude = $user->longitude;
+        $googleMapAPIKey = 'AIzaSyAomTWe6-_JXMoza7hm9olIQLZ8TEq5PdY';
+        $result_type = 'political'; //Google Map Api Address Types
+
+        //Send a request to Google Map Geocoding Reverse API
+        $response = $client->request('GET', "json?latlng=$latitude,$longitude&result_type=$result_type&key=$googleMapAPIKey");
+        //Get response body
+        $address_result = json_decode($response->getBody());
+        $address ='';
+
+        //if response is ok
+        if($address_result->status == 'OK'){
+
+            //get format address from response
+            $formatted_address = explode(',',$address_result->results[0]->formatted_address);
+            $address = $formatted_address[0];
+        }
+        else
+            $address = "Not Found";
 
 //        dd($user);
 
-        return view('user')->with('user',$user);
+        return view('user')->with('user',$user)->with('address',$address);
 
     }
 

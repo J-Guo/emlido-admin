@@ -66,7 +66,7 @@
                                 <span class="fa fa-map-marker text-primary"></span>
                             </td>
                             <td>Last Location</td>
-                            <td>{{$user->latitude}}</td>
+                            <td>{{$address}}</td>
                         </tr>
                         <tr>
                             <td>
